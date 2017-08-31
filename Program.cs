@@ -10,19 +10,20 @@ namespace C_Sharp_Fundamentals
     {
         public static void Main(string[] args)
         {
-            var numbers = new List<int> { 1, 2, 3, 4, 5, 6 };//declare the List
+            var numbers = new List<int> {1,2,3,4,5,6};//declare the List
             var smallests = GetSmallests(numbers, 3);
             foreach (var number in smallests) //Iterate over the List & display the numbers
                 Console.WriteLine(number);
         }
         public static List<int> GetSmallests(List<int> list, int count)
         {
+            var buffer = new List<int>(list);
             var smallests = new List<int>();
             while (smallests.Count < count)
             {
-                var min = GetSmallest(list);
+                var min = GetSmallest(buffer);
                 smallests.Add(min);
-                list.Remove(min);
+                buffer.Remove(min);
             }
             return smallests;
         }
